@@ -35,6 +35,7 @@ function checkWin() {
       boxValues[a] === boxValues[c]
     ) {
       gameOver = true;
+      applyStrikethrough(a, b, c)
       return boxValues[a];
     }
   }
@@ -57,6 +58,32 @@ function handleClick(event) {
   }
 }
 
+function applyStrikethrough(a, b, c) {
+    if (a === 0 && b === 1 && c === 2) {
+        strikethrough.classList.add("horizontal");
+        strikethrough.style.top = "50px";
+    } else if (a === 3 && b === 4 && c === 5) {
+        strikethrough.classList.add("horizontal");
+        strikethrough.style.top = "150px";
+    } else if (a === 6 && b === 7 && c === 8) {
+        strikethrough.classList.add("horizontal");
+        strikethrough.style.top = "250px";
+    } else if (a === 0 && b === 3 && c === 6) {
+        strikethrough.classList.add("vertical");
+        strikethrough.style.left = "50px";
+    } else if (a === 1 && b === 4 && c === 7) {
+        strikethrough.classList.add("vertical");
+        strikethrough.style.left = "150px";
+    } else if (a === 2 && b === 5 && c === 8) {
+        strikethrough.classList.add("vertical");
+        strikethrough.style.left = "250px";
+    } else if (a === 0 && b === 4 && c === 8) {
+        strikethrough.classList.add("diagonal1");
+    } else if (a === 2 && b === 4 && c === 6) {
+        strikethrough.classList.add("diagonal2");
+    }
+}
+
 function resetGame() {
   turn = "X";
   gameOver = false;
@@ -64,6 +91,8 @@ function resetGame() {
   turnO.hidden = true;
   result.textContent = "";
   boxes.forEach((box) => (box.textContent = ""));
+  strikethrough.className = "strikethrough";
+  strikethrough.style = "";
 }
 
 boxes.forEach((box) => box.addEventListener("click", handleClick));

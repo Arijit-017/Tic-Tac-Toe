@@ -25,10 +25,10 @@
         }
         .main{
             display: grid;
-            grid-template-rows: repeat(3,1fr);
+            grid-template-rows: repeat(3, 1fr);
             width: 300px;
-            grid-template-columns: repeat(3,1fr);
-
+            grid-template-columns: repeat(3, 1fr);
+            position: relative;
         }
         .box{
             height: 100px;
@@ -37,7 +37,8 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 50px;
+            font-size: 2em;
+            position: relative;
         }
         #reset{
             padding: 7px 20px;
@@ -54,6 +55,39 @@
             font-weight: 500;
             box-shadow: #4c4c4c 1px 1px;
         }
+        .strikethrough {
+            position: absolute;
+            background-color: red;
+            z-index: 1;
+        }
+        .horizontal {
+            height: 5px;
+            width: 300px;
+            top: 50%;
+            left: 0;
+            transform: translateY(-50%);
+        }
+        .vertical {
+            height: 300px;
+            width: 5px;
+            left: 50%;
+            top: 0;
+            transform: translateX(-50%);
+        }
+        .diagonal1 {
+            height: 5px;
+            width: 300px;
+            top: 50%;
+            left: 0;
+            transform: translateY(-50%) rotate(45deg);
+        }
+        .diagonal2 {
+            height: 5px;
+            width: 300px;
+            top: 50%;
+            left: 0;
+            transform: translateY(-50%) rotate(-45deg);
+        }
     </style>
 </head>
 <body>
@@ -62,8 +96,8 @@
         <button id="reset">Reset</button>
     </nav>
     <div class="section">
-        <div id="turnX" class="turn">"<i class="fa-solid fa-x"></i>" turn</div>
-        <div id="turnO" class="turn" hidden>"<i class="fa-solid fa-o"></i>" turn</div>
+        <div class="turn" id="turnX">"X" turn</div>
+        <div class="turn" id="turnO" hidden>"O" turn</div>
         <div class="main">
             <div class="box" id="sec1x1"></div>
             <div class="box" id="sec1x2"></div>
@@ -74,12 +108,11 @@
             <div class="box" id="sec3x1"></div>
             <div class="box" id="sec3x2"></div>
             <div class="box" id="sec3x3"></div>
+            <div class="strikethrough" id="strikethrough"></div>
         </div>
-        <div id="result" class="ans">
-    
-        </div>
-        <script src="https://kit.fontawesome.com/bb1c1f2873.js" crossorigin="anonymous"></script>
-        <script src="script.js"></script>
+        <div class="ans" id="result"></div>
     </div>
+    <script src="https://kit.fontawesome.com/bb1c1f2873.js" crossorigin="anonymous"></script>
+    <script src="script.js"></script>
 </body>
 </html>
